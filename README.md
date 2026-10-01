@@ -74,3 +74,17 @@ The second is code review. After solving a day and getting the right answer, I a
 The third is `count-dissections.go` in Day 24. That program exists because I solved the puzzle incorrectly, got the right answer anyway, and wanted to understand why. Rather than write the exhaustive checker myself, I described what it should do and let an AI generate it. It worked on the first prompt. This is the only piece of code in the repository that I did not write.
 
 What I did not use AI for is the solutions themselves. Every `part1.go`, `part2.go`, and `dayNN.go` was written by hand, and every algorithm choice was mine. The AI can generate code that passes the tests—if the goal had been to solve everything as fast as possible, it could have done most of it, with corrections here and there. But that was not the goal. I wanted to do it myself, and the write-ups are the record of that work. Since the explanations are the point of this repository, the code had to be mine.
+
+## Benchmarks hardware
+
+All measurements in the daily write-ups were taken on the same machine, with the same Go version and the same build flags. The numbers are not absolute—your machine will differ—but they are comparable to each other, which is what matters for the discussions in the write-ups.
+
+- **CPU:** Intel Core i5-8250U @ 1.60 GHz
+- **OS:** Linux 6.12.77 (x86_64)
+- **Go:** 1.26.1
+- **Build flags:** none; the binaries were produced with plain `go build`
+- **Power:** measurements were taken with the laptop plugged in
+
+Three things do not appear on this list, and their absence is deliberate. The number of CPU cores does not matter because every solution in this repository is single-threaded. The amount of RAM does not matter because no solution allocates more than a few tens of megabytes, and none of them swaps. The storage type does not matter because the input files are a few kilobytes and end up in the page cache after the first read.
+
+The one thing that does matter, beyond the CPU model, is power. On a laptop, the difference between running on battery and running plugged in can be a factor of two or more—the CPU throttles to conserve power, and the numbers become meaningless. If you reproduce these benchmarks, plug in first.
